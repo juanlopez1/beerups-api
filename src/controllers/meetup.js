@@ -1,4 +1,5 @@
 const {ObjectId} = require('mongoose').Types;
+const {isNil} = require('lodash');
 
 const {MeetupService} = require('../services');
 
@@ -29,9 +30,17 @@ class MeetupController {
 
     static async fetchMany(req, res, next) {
         try {
-            res.send(
-                await MeetupService.findByUser(req.user._id)
-            );
+            const {date} = req.params;
+
+            if (isNil(date)) {
+                res.send(
+                    await MeetupService.findByUser(ObjectId(req.user._id))
+                );
+            } else {
+                res.send(
+                    await MeetupService.fetch({date})
+                );
+            }
         } catch (err) {
             next({err});
         }

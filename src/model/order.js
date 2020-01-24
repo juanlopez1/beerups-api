@@ -5,7 +5,6 @@ const {ObjectId} = Schema;
 
 const OrderSchema = new Schema({
     _id: {type: ObjectId, required: true},
-    meetup: {type: ObjectId, required: true},
     canceled: {type: Boolean, default: false},
     modified: {type: Boolean, default: false},
     estimatedBeers: {type: Number},

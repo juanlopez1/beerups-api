@@ -6,13 +6,11 @@ const {ObjectId} = Schema;
 const MeetupSchema = new Schema({
     _id: {type: ObjectId, required: true},
     order: {type: ObjectId, required: true},
-    details: {
-        title: {type: String, required: true},
-        description: {type: String},
-        place: {type: String},
-        date: {type: Date, required: true},
-        oldDate: {type: Date}
-    },
+    title: {type: String, required: true},
+    description: {type: String},
+    place: {type: String},
+    date: {type: String, required: true},
+    time: {type: String, required: true},
     canceled: {type: Boolean, default: false},
     modified: {type: Boolean, default: false},
     creator: {type: ObjectId, required: true},
