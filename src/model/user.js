@@ -5,10 +5,12 @@ const {ObjectId} = Schema;
 
 const UserSchema = new Schema({
     _id: {type: ObjectId, required: true},
+    name: {type: String, required: true},
+    username: {type: String, required: true},
     password: {type: String, required: true},
     role: {type: String, required: true},
     disable: {type: Boolean, default: false}
-}, {collection: 'meetups', timestamps: true});
+}, {collection: 'users', timestamps: true});
 
 const User = mongoose.model('User', UserSchema);
 

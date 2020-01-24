@@ -1,7 +1,11 @@
 const MeetupService = require('./meetup');
+const OrderService = require('./order');
 const StatusService = require('./status');
+const UserService = require('./user');
 
 module.exports = {
     MeetupService,
-    StatusService
+    OrderService,
+    StatusService,
+    UserService
 };
