@@ -12,7 +12,6 @@ class MeetupService {
     }
 
     static async findByUser(user) {
-        console.log(user);
         const createdByUser = await Meetup.find({creator: user, canceled: false}).lean().exec();
         const participations = await Meetup.find({participants: {$in: user}, canceled: false}).lean().exec();
         return concat(createdByUser, participations);
