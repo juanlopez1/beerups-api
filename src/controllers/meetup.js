@@ -3,6 +3,15 @@ const {ObjectId} = require('mongoose').Types;
 const {MeetupService} = require('../services');
 
 class MeetupController {
+    static async checkIn(req, res, next) {
+        try {
+            await MeetupService.checkIn(ObjectId(req.params.id), ObjectId(req.user._id));
+            res.sendStatus(200);
+        } catch (err) {
+            next({err});
+        }
+    }
+
     static async create(req, res, next) {
         try {
             await MeetupService.create(req.body, ObjectId(req.user._id));
@@ -46,6 +55,15 @@ class MeetupController {
             res.send(
                 await MeetupService.fetchOne({_id: ObjectId(req.params.id)})
             );
+        } catch (err) {
+            next({err});
+        }
+    }
+
+    static async participate(req, res, next) {
+        try {
+            await MeetupService.participate(ObjectId(req.params.id), ObjectId(req.user._id));
+            res.sendStatus(200);
         } catch (err) {
             next({err});
         }

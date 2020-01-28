@@ -15,6 +15,7 @@ module.exports = router => {
 
                 if (match) {
                     res.send({
+                        _id: user._id,
                         name: user.name,
                         username: user.username,
                         role: {

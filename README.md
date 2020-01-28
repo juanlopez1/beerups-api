@@ -1,8 +1,6 @@
 # BeerUps-API
 
-A Node server. This app helps to organize meetups.
-
-This project was bootstrapped with [create-esm](https://github.com/standard-things/create-esm).
+A Node server. This API serves [BeerUps App](https://github.com/juanlopez1/beerups).
 
 ## Setting Environment
 

@@ -15,7 +15,8 @@ const MeetupSchema = new Schema({
     creator: {type: ObjectId, required: true},
     participants: {type: Array, required: true},
     beers: {type: Number, required: true},
-    boxes: {type: Number, required: true}
+    boxes: {type: Number, required: true},
+    checkedIn: {type: Array, default: []}
 }, {collection: 'meetups', timestamps: true});
 
 const Meetup = mongoose.model('Meetup', MeetupSchema);
