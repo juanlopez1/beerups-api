@@ -5,7 +5,7 @@ const {MeetupService} = require('../services');
 class MeetupController {
     static async create(req, res, next) {
         try {
-            await MeetupService.createMeetup(req.body, ObjectId(req.user._id));
+            await MeetupService.create(req.body, ObjectId(req.user._id));
             res.sendStatus(200);
         } catch (err) {
             next({err});
@@ -14,7 +14,8 @@ class MeetupController {
 
     static async edit(req, res, next) {
         try {
-            res.send({});
+            await MeetupService.update(req.body);
+            res.sendStatus(200);
         } catch (err) {
             next({err});
         }

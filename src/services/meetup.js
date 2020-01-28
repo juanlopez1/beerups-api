@@ -25,13 +25,17 @@ class MeetupService {
         );
     }
 
-    static async createMeetup(data, creator) {
+    static async create(data, creator) {
         await Meetup.create({
             ...data,
             creator,
             _id: ObjectId(),
             participants: map(data.participants, participant => ObjectId(participant._id))
         }).lean().exec();
+    }
+
+    static async update(data) {
+        await Meetup.updateOne({_id: ObjectId(data._id)}, data).lean().exec();
     }
 }
 
