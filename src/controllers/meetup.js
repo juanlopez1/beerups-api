@@ -5,17 +5,8 @@ const {MeetupService} = require('../services');
 class MeetupController {
     static async create(req, res, next) {
         try {
-            res.send(
-                await MeetupService.createMeetup(req.body, ObjectId(req.user._id))
-            );
-        } catch (err) {
-            next({err});
-        }
-    }
-
-    static async disable(req, res, next) {
-        try {
-            res.send({});
+            await MeetupService.createMeetup(req.body, ObjectId(req.user._id));
+            res.sendStatus(200);
         } catch (err) {
             next({err});
         }

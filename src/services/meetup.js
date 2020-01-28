@@ -26,7 +26,7 @@ class MeetupService {
     }
 
     static async createMeetup(data, creator) {
-        return Meetup.create({
+        await Meetup.create({
             ...data,
             creator,
             _id: ObjectId(),

@@ -6,6 +6,5 @@ module.exports = router => {
     router.get('/:id', MeetupController.fetchOne);
     router.post('/create', MeetupController.create);
     router.put('/edit/:id', MeetupController.edit);
-    router.put('/disable/:id', MeetupController.disable);
     return router;
 };

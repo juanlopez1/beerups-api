@@ -4,7 +4,7 @@ const {forEach} = require('lodash');
 
 const logger = require('../../helpers/logger');
 
-const makeApi = router => {
+module.exports = router => {
     forEach(
         requireDir('.', {recurse: true}),
         (module, name) => {
@@ -16,5 +16,3 @@ const makeApi = router => {
     );
     return router;
 };
-
-module.exports = makeApi;

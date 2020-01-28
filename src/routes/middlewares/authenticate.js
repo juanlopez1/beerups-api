@@ -3,12 +3,12 @@ const {UserService} = require('../../services');
 module.exports = async (req, res, next) => {
     try {
         const username = req.get('username');
-        const password = req.get('password');
+        const role = req.get('role');
 
-        if (username && password) {
-            const user = await UserService.fetchOne({username, password});
+        if (username && role) {
+            const user = await UserService.fetchOne({username});
 
-            if (user) {
+            if (role === user.role) {
                 req.user = user;
                 next();
                 return;
