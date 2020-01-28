@@ -1,12 +1,13 @@
 const {ObjectId} = require('mongoose').Types;
-const {isNil} = require('lodash');
 
 const {MeetupService} = require('../services');
 
 class MeetupController {
     static async create(req, res, next) {
         try {
-            res.send({});
+            res.send(
+                await MeetupService.createMeetup(req.body, ObjectId(req.user._id))
+            );
         } catch (err) {
             next({err});
         }
@@ -28,19 +29,21 @@ class MeetupController {
         }
     }
 
-    static async fetchMany(req, res, next) {
+    static async fetchByUser(req, res, next) {
         try {
-            const {date} = req.params;
+            res.send(
+                await MeetupService.findByUser(ObjectId(req.user._id))
+            );
+        } catch (err) {
+            next({err});
+        }
+    }
 
-            if (isNil(date)) {
-                res.send(
-                    await MeetupService.findByUser(ObjectId(req.user._id))
-                );
-            } else {
-                res.send(
-                    await MeetupService.fetch({date})
-                );
-            }
+    static async fetchByDate(req, res, next) {
+        try {
+            res.send(
+                await MeetupService.fetch({date: req.params.date})
+            );
         } catch (err) {
             next({err});
         }

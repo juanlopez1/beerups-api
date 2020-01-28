@@ -1,7 +1,8 @@
 const {MeetupController} = require('../../controllers');
 
 module.exports = router => {
-    router.get('/list/:date?', MeetupController.fetchMany);
+    router.get('/list', MeetupController.fetchByUser);
+    router.get('/list/:date', MeetupController.fetchByDate);
     router.get('/:id', MeetupController.fetchOne);
     router.post('/create', MeetupController.create);
     router.put('/edit/:id', MeetupController.edit);

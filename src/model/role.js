@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const {Schema} = mongoose;
 
 const RoleSchema = new Schema({
-    _id: {type: String, required: true},
+    _id: {type: String},
     name: {type: String, required: true}
 }, {collection: 'roles', timestamps: true});
 

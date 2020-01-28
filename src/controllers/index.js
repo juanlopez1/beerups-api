@@ -1,9 +1,9 @@
 const MeetupController = require('./meetup');
-const OrderController = require('./order');
 const StatusController = require('./status');
+const UserController = require('./user');
 
 module.exports = {
     MeetupController,
-    OrderController,
-    StatusController
+    StatusController,
+    UserController
 };
